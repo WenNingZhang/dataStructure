@@ -7,13 +7,10 @@
 
 ```
 
-#### 解决
-```
-方法一:暴力法
-	1、设定一个整数最大值作为最接近的三个和的数`closeNum`
-	2、三层 for 循环遍历数组，计算出接近值 `Math.abs( list[i] + list[j] + list[k] - target)`
-	3、比较 计算出的接近值 和 `closeNum`，如果比`closeNum`小，赋值。否则，不处理。
-```
+#### 方法一
++ 设定一个整数最大值作为最接近的三个和的数`closeNum`
++ 三层 for 循环遍历数组，计算出接近值 `Math.abs( list[i] + list[j] + list[k] - target)`
++ 比较 计算出的接近值 和 `closeNum`，如果比`closeNum`小，赋值。否则，不处理。
 
 ```
 function close(list, target) {
