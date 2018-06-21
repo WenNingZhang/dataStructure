@@ -8,9 +8,9 @@
 ```
 
 #### 方法一
-+ 设定一个整数最大值作为最接近的三个和的数`closeNum`
-+ 三层 for 循环遍历数组，计算出接近值 `Math.abs( list[i] + list[j] + list[k] - target)`
-+ 比较 计算出的接近值 和 `closeNum`，如果比`closeNum`小，赋值。否则，不处理。
++ 设定一个整数最大值作为最接近的三个和的数`closeNum`。
++ 三层 for 循环遍历数组，计算出接近值 `Math.abs( list[i] + list[j] + list[k] - target)`。
++ 比较 计算出的接近值 和 `closeNum`，如果比 `closeNum` 小，赋值。否则，不处理。
 
 ```
 function close(list, target) {
@@ -28,22 +28,21 @@ function close(list, target) {
 	}
 	return sum
 }
-
-let list = [-1, 2, 1, -4]
-let target = 1
-console.log(close(list, target))
-
 ```
 
-方法二: 
-
+#### 方法二
++ 先把数组排好序。
++ 在数组中随便捞取三个数，作为比较对象 `ans`。
++ 因为 j, k 要占用两个元素，所以要留两个元素，值为 list.length - 2。
++ j ,k 要选取开始和结束的两个位置，获取绝对值，进行比较，如果更接近记录下来。 ans
++ 然后要需要移动 k, j 指针。如果三和小于 `target`, k 往前跑，反之 j 往前跑。相等的话直接返回 sum。
 ```
 /**
  * @param {number[]} list
  * @param {number} target
  * @return {number}
  */
- var threeSumClosest = function(list, target) {
+ function close(list, target) {
  	let sum = 0
  	list.sort((a, b) => a - b)
 	let ans = list[0] + list[1] + list[2]
@@ -66,9 +65,4 @@ console.log(close(list, target))
 	}
 	return ans
 };
-
-
-let list = [1, 1, -1]
-let target = 0
-console.log(threeSumClosest(list, target))
 ```
