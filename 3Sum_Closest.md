@@ -1,14 +1,14 @@
-leetcode link
-`https://leetcode.com/problems/3sum-closest/description/`
+### [3Sum Closest](https://leetcode.com/problems/3sum-closest/description/)
 
-### 3Sum Closest
-
+#### 描述
 ```
 有一个由 n 个整数组成的数组 nums ，另外给一个整数 target, 在数组 nums 中找寻三个数，然后相加三个数,和为 sum，使得 sum 最接近 target。
 返回值为3个整数的和。
 
 ```
 
+#### 解决
+```
 方法一:暴力法
 	1、设定一个整数最大值作为最接近的三个和的数`closeNum`
 	2、三层 for 循环遍历数组，计算出接近值 `Math.abs( list[i] + list[j] + list[k] - target)`
