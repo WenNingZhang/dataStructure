@@ -1,60 +1,98 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import Input from "../presentational/Input";
-import Logic from "../../logic"
-class FormContainer extends Component {
+import d3 from "d3";
+import React, {Component} from "react";
+
+class TreeContainer extends Component {
     constructor() {
         super();
-
-        this.state = {
-            value: "",
-            showTree: false
-        };
-
     }
 
-    /**
-     * https://stackoverflow.com/questions/29280445/reactjs-setstate-with-a-dynamic-key-name
-     *  When you need to handle multiple controlled input elements, you can add a name attribute to each element and
-     *  let the handler function choose what to do based on the value of event.target.name.
-     *  // arrow function
-     *  https://stackoverflow.com/questions/41398645/unable-to-use-arrow-functions-inside-react-component-class
-     */
-    handleChange = (event) =>  {
-        this.setState({ [event.target.id]: event.target.value });
+    componentDidMount() {
+        this.createBarChart(this.props.data);
     }
 
-    ok = () => {
-        const value = this.state.value
-        const treeNodes = Logic(value)
-        if (treeNodes) this.setState({showTree: true})
-        console.log(JSON.stringify(treeNodes))
-    }
+
+    createBarChart = (treeData) => {
+        // ************** Generate the tree diagram	 *****************
+        var margin = {top: 40, right: 120, bottom: 20, left: 120},
+            width = 960 - margin.right - margin.left,
+            height = 500 - margin.top - margin.bottom;
+
+        var i = 0;
+
+        var tree = d3.layout.tree()
+            .size([height, width]);
+
+        var diagonal = d3.svg.diagonal()
+            .projection(function (d) {
+                return [d.x, d.y];
+            });
+
+        var svg = d3.select("body").append("svg")
+            .attr("width", width + margin.right + margin.left)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+        update(treeData);
+
+        function update(source) {
+
+            // Compute the new tree layout.
+            var nodes = tree.nodes(treeData).reverse(),
+                links = tree.links(nodes);
+
+            // Normalize for fixed-depth.
+            nodes.forEach(function (d) {
+                d.y = d.depth * 100;
+            });
+
+            // Declare the nodes…
+            var node = svg.selectAll("g.node")
+                .data(nodes, function (d) {
+                    return d.id || (d.id = ++i);
+                });
+
+            // Enter the nodes.
+            var nodeEnter = node.enter().append("g")
+                .attr("class", "node")
+                .attr("transform", function (d) {
+                    console.log(d);
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+
+            nodeEnter.append("circle")
+                .attr("r", 10)
+                .style("fill", "#fff");
+
+            nodeEnter.append("text")
+                .attr("y", function (d) {
+                    return d.children || d._children ? -18 : 18;
+                })
+                .attr("dy", ".35em")
+                .attr("text-anchor", "middle")
+                .text(function (d) {
+                    return d.name;
+                })
+                .style("fill-opacity", 1);
+
+            // Declare the links…
+            var link = svg.selectAll("path.link")
+                .data(links, function (d) {
+                    return d.target.id;
+                });
+
+            // Enter the links.
+            link.enter().insert("path", "g")
+                .attr("class", "link")
+                .attr("d", diagonal);
+        }
+    };
 
     render() {
-        const { value, showTree} = this.state;
-        return (
-            <div>
-                <form id="article-form">
-                    <Input
-                        text="SEO title"
-                        label="value"
-                        type="text"
-                        id="value"
-                        value={value}
-                        handleChange={this.handleChange}
-                    />
-                    <button type="button" className="btn btn-primary" onClick={this.ok}>确定</button>
-                </form>
-                {showTree ? <div>
-                    123
-                </div>:
-                null}
-            </div>
-        );
+        return null
     }
 }
 
-const wrapper = document.getElementById("create-article-form");
-wrapper ? ReactDOM.render(<FormContainer />, wrapper) : false;
+export default TreeContainer;
 

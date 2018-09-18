@@ -1,18 +1,15 @@
-const MAX = 50;
 
-module.exports = (nums) => {
-    const items = new Array(nums);
-    console.log(items, items.length)
-    let b =  items.map(() => {
-        let c =  parseInt(Math.random() * MAX, 10) + 1
-        console.log(c )
-        return c
-    });
+const MAX = 100
 
-    console.log(b)
+const generatorRandom = (nums) => {
+    let arr = [];
+    while (arr.length < nums) {
+        const randomnumber = Math.floor(Math.random() * MAX) + 1;
+        if (arr.indexOf(randomnumber) > -1) continue;
+        arr.push(randomnumber);
+    }
+    return arr;
 };
 
 
-let a = module.exports(10)
-
-console.log(a)
+module.exports = generatorRandom
