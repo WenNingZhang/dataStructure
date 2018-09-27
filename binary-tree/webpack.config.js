@@ -25,7 +25,26 @@ module.exports = {
                     "css-loader", // translates CSS into CommonJS
                     "sass-loader" // compiles Sass to CSS, using Node Sass by default
                 ]
-            }
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    {
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 1
+                        }
+                    },
+                    {
+                        loader: "less-loader",
+                        options: {
+                            javascriptEnabled: true,
+                        }
+                    }
+                ]            }
         ]
     },
     plugins: [
