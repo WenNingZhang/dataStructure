@@ -40,8 +40,8 @@ class TreeContainer extends Component {
         d3.select("svg").remove() // remove all svg element
 
         let  svg = d3.select(id).append("svg")
-            .attr("width", width + margin.right + margin.left)
-            .attr("height", height + margin.top + margin.bottom)
+            .attr("width", 2000)
+            .attr("height", 1050)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
