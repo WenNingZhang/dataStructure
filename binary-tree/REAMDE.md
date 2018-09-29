@@ -81,3 +81,4 @@ function getPath(trees) {
 改正后，每次调用函数时就 初始化变量，就 ok 了.
 
 
+最后 npm build 进行打包成一个文件，然后放到docker 进行部署就行了
