@@ -16,8 +16,59 @@ function Insert(element, tree = null) {
 }
 
 
+
+
+// 获取该二叉树的所有路径，其实就是树的前序遍历，拿到头，把节点信息存储好，往下一次遍历左孩子、右孩子
+// 路径的特点是 左孩子和右孩子的子节点 都是 null
+let paths = []
+function getPathLib(trees, path = [], pathLen = 0) {
+    if (!trees) return null
+
+    path[pathLen] = trees.element
+    pathLen++
+
+    if (trees.left === null && trees.right === null) {
+
+        paths.push(path)
+
+    } else {
+
+        getPathLib(trees.left, [...path], pathLen)
+        getPathLib(trees.right, [...path], pathLen)
+
+    }
+}
+
+function getPath(trees) {
+
+    let paths = []
+    getPathLib(trees)
+
+    function getPathLib (trees, path = [], pathLen = 0)  {
+        if (!trees) return null
+
+        path[pathLen] = trees.element
+        pathLen++
+
+        if (trees.left === null && trees.right === null) {
+
+            paths.push(path)
+
+        } else {
+
+            getPathLib(trees.left, [...path], pathLen)
+            getPathLib(trees.right, [...path], pathLen)
+
+        }
+    }
+
+    return paths
+}
+
+
 module.exports = {
-    Insert: Insert
+    Insert: Insert,
+    getPath: getPath
 };
 
 

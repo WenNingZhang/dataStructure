@@ -1,13 +1,16 @@
 import React, {Component} from "react"
 import ReactDOM from "react-dom"
 import TreeContainer from "./TreeContainer"
-import Logic from "../logic"
+import { Insert, getPath} from "../logic"
 import 'antd/dist/antd.less'
 
 
-import { Button, Layout } from 'antd'
+import { Button, Layout, Collapse} from 'antd'
 
 const { Header, Footer, Content } = Layout
+
+const Panel = Collapse.Panel
+
 
 import InputModel from './Model'
 
@@ -18,7 +21,9 @@ class Main extends Component {
         this.state = {
             value: "",
             showTree: false,
-            handleData: null,
+            treesD3: null,
+            trees: null,
+            paths : [],
             visible: false
         };
 
@@ -36,11 +41,17 @@ class Main extends Component {
     }
 
     handleLogic = (value) => {
-        const treeNodes = Logic(value)
+        const { trees, treesD3 } = Insert(value)
 
-        this.setState({showTree: true, handleData: treeNodes})
+        const paths = this.handleGetPath(trees)
+
+        this.setState({showTree: true, treesD3: treesD3, trees: trees, paths: paths})
+
     }
 
+    handleGetPath = (trees) => {
+        return getPath(trees)
+    }
 
     showModal = () => {
         this.setState({visible: true})
@@ -56,7 +67,11 @@ class Main extends Component {
     }
 
     render() {
-        const {visible, showTree, handleData } = this.state
+        const {visible, showTree, treesD3, paths = []} = this.state
+
+
+        const createPath = paths.map((path, key) => <p key = {key}> {path} </p> )
+
 
         return (
             <div>
@@ -77,28 +92,28 @@ class Main extends Component {
 
                             <div style={{ background: '#fff', textAlign: 'center' , float:'left', width: '38%'}} id = "chart">
 
-                                <TreeContainer data={handleData} id = "#chart" visible = {showTree}></TreeContainer>
+                                <TreeContainer data={treesD3} id = "#chart" visible = {showTree}></TreeContainer>
 
                             </div>
 
-                            <div style={{ padding: 24, background: '#fff', textAlign: 'center' ,float:'right', width: '60%'}}>
-                                ...
-                                <br />
-                                Really
-                                <br />...<br />...<br />...<br />
-                                long
-                                <br />...<br />...<br />...<br />...<br />...<br />...
-                                <br />...<br />...<br />...<br />...<br />...<br />...
-                                <br />...<br />...<br />...<br />...<br />...<br />...
-                                <br />...<br />...<br />...<br />...<br />...<br />...
-                                <br />...<br />...<br />...<br />...<br />...<br />...
-                                <br />...<br />...<br />...<br />...<br />...<br />...
-                                <br />...<br />...<br />...<br />...<br />...<br />
-                                content
+                            <div style={{ padding: 24, background: '#fff', textAlign: 'left' ,float:'right', width: '60%'}}>
+
+                                <Collapse defaultActiveKey={['1','2','3']}>
+                                    <Panel header=" 该二叉树的所有路径 " key="1" >
+                                        {createPath}
+                                    </Panel>
+                                    <Panel header="This is panel header 2" key="2">
+                                        <p>123</p>
+                                    </Panel>
+                                    <Panel header="This is panel header 3" key="3" disabled>
+                                        <p>321</p>
+                                    </Panel>
+                                </Collapse>
+
                             </div>
                         </Content>
                         <Footer style={{ textAlign: 'center' }}>
-                            Ant Design ©2018 Created by Ant UED
+                            Ant Design ©2018 Created by zhangwinning
                         </Footer>
                     </Layout>
             </div>

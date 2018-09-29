@@ -8,7 +8,6 @@ class TreeContainer extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('=====>', nextProps.visible, nextProps)
         if (nextProps.visible) {
             this.createBarChart(nextProps.data, nextProps.id)
         }
@@ -71,7 +70,6 @@ class TreeContainer extends Component {
             let  nodeEnter = node.enter().append("g")
                 .attr("class", "node")
                 .attr("transform", function (d) {
-                    console.log(d)
                     return "translate(" + d.x + "," + d.y + ")"
                 })
 
