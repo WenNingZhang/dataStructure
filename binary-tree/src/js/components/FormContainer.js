@@ -1,11 +1,11 @@
 import React, {Component} from "react"
 import ReactDOM from "react-dom"
 import TreeContainer from "./TreeContainer"
-import { Insert, getPath} from "../logic"
+import { Insert, getPath, getNodeCount} from "../logic"
 import 'antd/dist/antd.less'
 
 
-import { Button, Layout, Collapse} from 'antd'
+import { Button, Layout, Collapse, Row, Col} from 'antd'
 
 const { Header, Footer, Content } = Layout
 
@@ -24,6 +24,8 @@ class Main extends Component {
             treesD3: null,
             trees: null,
             paths : [],
+            nodes : null,
+            randoms: null,
             visible: false
         };
 
@@ -41,16 +43,16 @@ class Main extends Component {
     }
 
     handleLogic = (value) => {
-        const { trees, treesD3 } = Insert(value)
+        let { randoms, trees, treesD3 } = Insert(value)
 
-        const paths = this.handleGetPath(trees)
+        const paths = getPath(trees)
 
-        this.setState({showTree: true, treesD3: treesD3, trees: trees, paths: paths})
+        const nodes = getNodeCount(trees)
 
-    }
+        randoms = randoms.join(',')
 
-    handleGetPath = (trees) => {
-        return getPath(trees)
+        this.setState({showTree: true, treesD3: treesD3, trees: trees, paths: paths, nodes: nodes, randoms})
+
     }
 
     showModal = () => {
@@ -67,10 +69,10 @@ class Main extends Component {
     }
 
     render() {
-        const {visible, showTree, treesD3, paths = []} = this.state
+        const {visible, showTree, treesD3, paths = [], nodes = 0, randoms = 0} = this.state
 
 
-        const createPath = paths.map((path, key) => <p key = {key}> {path} </p> )
+        const createPath = paths.map((path, key) => <h2 key = {key}> {path} </h2> )
 
 
         return (
@@ -79,11 +81,20 @@ class Main extends Component {
                     <Layout style={{ marginLeft: 0 }}>
                         <Header style={{ background: '#fff', padding: 0 }} >
 
-                            <Button type="primary" onClick={this.showModal}>
+                            <Row type="flex" justify="start" align="middle">
+                                <Col span={2}>
+                                    <Button type="primary" onClick={this.showModal}>
 
-                                input value
+                                        input value
 
-                            </Button>
+                                    </Button>
+                                </Col>
+                                <Col>
+                                        产生的随机数: {randoms}
+                                </Col>
+                            </Row>
+
+
 
                             <InputModel onShowModal = {this.onShowModal} onInputChange = { this.onInputChange } visible = {visible}></InputModel>
 
@@ -100,10 +111,12 @@ class Main extends Component {
 
                                 <Collapse defaultActiveKey={['1','2','3']}>
                                     <Panel header=" 该二叉树的所有路径 " key="1" >
-                                        {createPath}
+                                        {
+                                            createPath
+                                        }
                                     </Panel>
-                                    <Panel header="This is panel header 2" key="2">
-                                        <p>123</p>
+                                    <Panel header=" 该二叉树的上的节点数量" key="2">
+                                        <h2>{nodes}</h2>
                                     </Panel>
                                     <Panel header="This is panel header 3" key="3" disabled>
                                         <p>321</p>

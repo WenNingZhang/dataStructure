@@ -40,7 +40,7 @@ class InputModel extends Component {
                        visible={visible}
                 >
                 <div>
-                    <Input onChange = {this.onInputChange}/>
+                    <Input onChange = {this.onInputChange} />
                 </div>
                 </Modal>
             </div>

@@ -65,10 +65,23 @@ function getPath(trees) {
     return paths
 }
 
+// 查找树上的节点数量
+function get_node_count(trees) {
+    if (!trees) return 0
+    else {
+        let nodes = 0
+        if (trees.element) nodes = 1
+        if (trees.left) nodes = get_node_count(trees.left) + 1
+        if (trees.right) nodes = get_node_count(trees.right) + nodes
+        return nodes
+    }
+}
+
 
 module.exports = {
     Insert: Insert,
-    getPath: getPath
+    getPath: getPath,
+    getNodeCount: get_node_count
 };
 
 
