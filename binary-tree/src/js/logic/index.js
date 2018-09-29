@@ -5,7 +5,12 @@ const treeDataToD3 = require('./treeDataToD3')
 import {
     Insert as inserLib,
     getPath as getPathLib,
-    getNodeCount
+    getNodeCount,
+    printValues as printValuesLib,
+    getHeight,
+    getMin,
+    getMax,
+    isBinarySearchTree
 } from './tree'
 
 
@@ -29,8 +34,19 @@ function getPath(trees) {
 }
 
 
+function printValues(trees) {
+    const elements = printValuesLib(trees)
+
+    return elements.join(',')
+}
+
 module.exports = {
     Insert: Insert,
     getPath: getPath,
-    getNodeCount: getNodeCount
+    getNodeCount: getNodeCount,
+    printValues: printValues,
+    getHeight,
+    getMin,
+    getMax,
+    isBinarySearchTree
 }

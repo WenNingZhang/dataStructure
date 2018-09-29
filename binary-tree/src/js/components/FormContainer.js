@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import ReactDOM from "react-dom"
 import TreeContainer from "./TreeContainer"
-import { Insert, getPath, getNodeCount} from "../logic"
+import { Insert, getPath, getNodeCount, printValues, getHeight, getMin, getMax, isBinarySearchTree} from "../logic"
 import 'antd/dist/antd.less'
 
 
@@ -26,6 +26,11 @@ class Main extends Component {
             paths : [],
             nodes : null,
             randoms: null,
+            elements: null, // 树的节点数，从小到大排列
+            height : null,
+            min : null,
+            max: null,
+            isATD : false,
             visible: false
         };
 
@@ -49,9 +54,20 @@ class Main extends Component {
 
         const nodes = getNodeCount(trees)
 
+        const elements = printValues(trees)
+
+        const height = getHeight(trees)
+
+        const min = getMin(trees)
+
+        const max = getMax(trees)
+
+        let isATD = isBinarySearchTree(trees)
+
         randoms = randoms.join(',')
 
-        this.setState({showTree: true, treesD3: treesD3, trees: trees, paths: paths, nodes: nodes, randoms})
+        isATD === true ? isATD = '是' : isATD = '非'
+        this.setState({showTree: true, treesD3: treesD3, trees: trees, paths: paths, nodes: nodes, randoms, elements, height, min, max, isATD })
 
     }
 
@@ -69,7 +85,7 @@ class Main extends Component {
     }
 
     render() {
-        const {visible, showTree, treesD3, paths = [], nodes = 0, randoms = 0} = this.state
+        const {visible, showTree, treesD3, paths = [], nodes = 0, randoms = 0, elements = 0, height = 0, min = 0, max = 0, isATD = false} = this.state
 
 
         const createPath = paths.map((path, key) => <h2 key = {key}> {path} </h2> )
@@ -94,8 +110,6 @@ class Main extends Component {
                                 </Col>
                             </Row>
 
-
-
                             <InputModel onShowModal = {this.onShowModal} onInputChange = { this.onInputChange } visible = {visible}></InputModel>
 
                         </Header>
@@ -109,24 +123,48 @@ class Main extends Component {
 
                             <div style={{ padding: 24, background: '#fff', textAlign: 'left' ,float:'right', width: '60%'}}>
 
-                                <Collapse defaultActiveKey={['1','2','3']}>
-                                    <Panel header=" 该二叉树的所有路径 " key="1" >
+                                <Collapse defaultActiveKey={['1','2','3', '4', '5', '6', '7']}>
+                                    <Panel header=" ATD 的所有路径 " key="1" >
                                         {
                                             createPath
                                         }
                                     </Panel>
-                                    <Panel header=" 该二叉树的上的节点数量" key="2">
-                                        <h2>{nodes}</h2>
+                                    <Panel header=" ATD 的上的节点数量" key="2">
+                                        <h2>
+                                            {nodes}
+                                        </h2>
                                     </Panel>
-                                    <Panel header="This is panel header 3" key="3" disabled>
-                                        <p>321</p>
+                                    <Panel header=" 从小到大打印 ATD 节点" key="3">
+                                        <h2>
+                                            {elements}
+                                        </h2>
+                                    </Panel>
+                                    <Panel header=" ATD 的高度" key="4">
+                                        <h2>
+                                            {height}
+                                        </h2>
+                                    </Panel>
+                                    <Panel header=" ATD 的最小值" key="5">
+                                        <h2>
+                                            {min}
+                                        </h2>
+                                    </Panel>
+                                    <Panel header=" ATD 的最大值" key="6">
+                                        <h2>
+                                            {max}
+                                        </h2>
+                                    </Panel>
+                                    <Panel header=" 是否为 ATD" key="7">
+                                        <h2>
+                                            {isATD}
+                                        </h2>
                                     </Panel>
                                 </Collapse>
 
                             </div>
                         </Content>
                         <Footer style={{ textAlign: 'center' }}>
-                            Ant Design ©2018 Created by zhangwinning
+                            binary-tree ©2018 Created by zhangwinning
                         </Footer>
                     </Layout>
             </div>
