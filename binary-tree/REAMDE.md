@@ -1,8 +1,37 @@
+
+
+
+对于程序员来说，算法和数据数据结构绕不开的，本文另辟蹊径，以图示的方式, 着重说明 查找树(ATD)相关的算法。
+
+![avatar](https://github.com/zhangwinning/dataStructure/tree/master/binary-tree/src/js/pic/tree.jpg)
+
+
+### 主要用到的依赖
+
+- react 
+- webpack
+- d3 (二叉树的展示图)
+- antd
+
+
+具体实现算法包括
++ ATD 的所有路径
++ ATD 的节点数
++ 如何从小到大打印 ATD 节点
++ ATD 的高度
++ ATD 的最小值
++ ATD 的最大值
++ 该二叉树是否为 ATD
+
+
+
+
+
+
+
 写一个弹窗，点击弹窗出来一个框，输入一个数字，为二叉树输入的个数
 
 左侧为该二叉树的信息，包括一系列各种信息
-
-
 
 
 刚刚遇到一个 bug ，定位了好长时间才解决，遂记录下来
