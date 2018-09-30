@@ -41,10 +41,10 @@ function printValues(trees) {
 }
 
 module.exports = {
-    Insert: Insert,
-    getPath: getPath,
-    getNodeCount: getNodeCount,
-    printValues: printValues,
+    Insert,
+    getPath,
+    getNodeCount,
+    printValues,
     getHeight,
     getMin,
     getMax,
