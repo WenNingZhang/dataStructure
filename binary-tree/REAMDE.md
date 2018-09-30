@@ -3,7 +3,7 @@
 
 对于程序员来说，算法和数据数据结构绕不开的，本文另辟蹊径，以图示的方式, 着重说明 查找树(ATD)相关的算法。
 
-![avatar](https://github.com/zhangwinning/dataStructure/tree/master/binary-tree/src/js/pic/tree.jpg)
+![avatar](https://raw.githubusercontent.com/zhangwinning/dataStructure/master/binary-tree/src/js/pic/tree.jpg)
 
 
 ### 主要用到的依赖
