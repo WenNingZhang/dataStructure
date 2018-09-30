@@ -1,9 +1,11 @@
 
 
 
-对于程序员来说，算法和数据数据结构绕不开的，本文另辟蹊径，以图示的方式, 着重说明 查找树(ATD)相关的算法。
+对于程序员来说，算法和数据数据结构绕不开的，本文另辟蹊径，以图示的方式, 着重说明 二叉查找树(BST)相关的算法，想是可视化的东西更适合联想，记忆。
 
-![avatar](https://raw.githubusercontent.com/zhangwinning/dataStructure/master/binary-tree/src/js/pic/tree.jpg)
+<h2><a href="http://106.15.231.221:8200/dist/" target="_blank">测试链接</a></h2>
+
+![tree](https://raw.githubusercontent.com/zhangwinning/dataStructure/master/binary-tree/src/js/pic/tree.jpg)
 
 
 ### 主要用到的依赖
@@ -14,14 +16,26 @@
 - antd
 
 
-具体实现算法包括
-+ ATD 的所有路径
-+ ATD 的节点数
-+ 如何从小到大打印 ATD 节点
-+ ATD 的高度
-+ ATD 的最小值
-+ ATD 的最大值
-+ 该二叉树是否为 ATD
+### 具体实现算法包括
++ BST 的所有路径
++ BST 的节点数
++ 如何从小到大打印 BST 节点
++ BST 的高度
++ BST 的最小值
++ BST 的最大值
++ 该二叉树是否为 BST
+
+### 代码结构
+
+![structure](https://raw.githubusercontent.com/zhangwinning/dataStructure/master/binary-tree/src/js/pic/structure.jpg)
+
++ components目录  （react组件相关代码）
++ logic目录       （BST的数据结构）
+
+
+### 每个算法的主要逻辑
+
++ BST 所有路径
 
 
 

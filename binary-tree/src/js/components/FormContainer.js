@@ -124,37 +124,37 @@ class Main extends Component {
                             <div style={{ padding: 24, background: '#fff', textAlign: 'left' ,float:'right', width: '60%'}}>
 
                                 <Collapse defaultActiveKey={['1','2','3', '4', '5', '6', '7']}>
-                                    <Panel header=" ATD 的所有路径 " key="1" >
+                                    <Panel header=" BST 的所有路径 " key="1" >
                                         {
                                             createPath
                                         }
                                     </Panel>
-                                    <Panel header=" ATD 的上的节点数量" key="2">
+                                    <Panel header=" BST 的上的节点数量" key="2">
                                         <h2>
                                             {nodes}
                                         </h2>
                                     </Panel>
-                                    <Panel header=" 从小到大打印 ATD 节点" key="3">
+                                    <Panel header=" 从小到大打印 BST 节点" key="3">
                                         <h2>
                                             {elements}
                                         </h2>
                                     </Panel>
-                                    <Panel header=" ATD 的高度" key="4">
+                                    <Panel header=" BST 的高度" key="4">
                                         <h2>
                                             {height}
                                         </h2>
                                     </Panel>
-                                    <Panel header=" ATD 的最小值" key="5">
+                                    <Panel header=" BST 的最小值" key="5">
                                         <h2>
                                             {min}
                                         </h2>
                                     </Panel>
-                                    <Panel header=" ATD 的最大值" key="6">
+                                    <Panel header=" BST 的最大值" key="6">
                                         <h2>
                                             {max}
                                         </h2>
                                     </Panel>
-                                    <Panel header=" 是否为 ATD" key="7">
+                                    <Panel header=" 是否为 BST" key="7">
                                         <h2>
                                             {isATD}
                                         </h2>
