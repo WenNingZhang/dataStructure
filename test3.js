@@ -1,9 +1,16 @@
-var arr = []
-while(arr.length < 8){
-    var randomnumber = Math.floor(Math.random()*100) + 1;
-    if(arr.indexOf(randomnumber) > -1) continue;
-    arr.push(randomnumber)
+var my_object = {
+    '0': 'zero',
+    '1': 'one',
+    '2': 'two',
+    '3': 'three',
+    '4': 'four',
+    length: 5
+};
+
+var sliced = Array.prototype.slice.call( my_object);
+
+console.log(sliced)
+
+for(let value in my_object) {
+    console.log(value)
 }
-
-
-console.log(arr)

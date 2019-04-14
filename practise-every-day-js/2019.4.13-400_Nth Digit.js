@@ -24,7 +24,6 @@
  which is part of the number 10.
  **/
 
-// 第一种使用野蛮暴力方法，直接遍历从 1 到 2^31
 function run(n) {
     let len = 1
     let count = 9
