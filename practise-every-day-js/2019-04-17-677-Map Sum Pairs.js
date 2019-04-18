@@ -44,62 +44,6 @@ MapSum.prototype.sum = function(prefix) {
     return sum;
 };
 
-/**
- * Your MapSum object will be instantiated and called as such:
- * var obj = new MapSum()
- * obj.insert(key,val)
- * var param_2 = obj.sum(prefix)
- */
-
-
-var MapSum = function() {
-    this.root = {};
-};
-
-/**
- * @param {string} key
- * @param {number} val
- * @return {void}
- */
-MapSum.prototype.insert = function(key, val) {
-    let curr = this.root;
-    key.split("").forEach(ch => {
-        console.log(ch, curr)
-        curr[ch] = curr[ch] || {};
-        // console.log(curr[ch])
-        curr = curr[ch]
-        // console.log(curr)
-    })
-    curr.end = val;
-};
-
-/**
- * @param {string} prefix
- * @return {number}
- */
-MapSum.prototype.sum = function(prefix) {
-    let curr = this.root;
-    for(let i=0; i<prefix.length; i++){
-        curr = curr[prefix[i]] || {};
-    }
-
-    let dfs = (node, sum = 0) => {
-        if(!node) return sum;
-        if(node["end"]){
-            sum += node["end"];
-            if(Object.keys(node).length === 1) return sum;
-        } else if (Object.keys(node).length === 0) {
-            return sum;
-        }
-        return Object.keys(node).reduce((accSum, currKey) => {
-            if(currKey === "end") return accSum;
-            return dfs(node[currKey], accSum);
-        }, sum)
-    }
-
-    return dfs(curr, 0);
-};
-
 var obj = new MapSum()
 console.log(obj)
 obj.insert("apple",3)

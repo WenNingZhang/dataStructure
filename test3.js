@@ -1,16 +1,7 @@
-var my_object = {
-    '0': 'zero',
-    '1': 'one',
-    '2': 'two',
-    '3': 'three',
-    '4': 'four',
-    length: 5
-};
+let a = { }
 
-var sliced = Array.prototype.slice.call( my_object);
+let b = { }
 
-console.log(sliced)
+a[b] = 'haha'
 
-for(let value in my_object) {
-    console.log(value)
-}
+console.log(a)
