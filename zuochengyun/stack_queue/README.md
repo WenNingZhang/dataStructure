@@ -51,14 +51,20 @@ min_stack.js
 该题目比较简单，用两个栈一个记录栈内数据，另一个记录最小值。
 
 5、判断一个数组是否为回文字符串？
-	1、方法一: 通过两个指针，头指针、尾指针，依次判断是否相等。如果相等就是回文，否则就不是
-	2、通过容器，放到栈中，依次判断。
-6、判断一个链表是否为回文字符串。
-	IsPalindromeList.js
-	这里需要借助容器，(stack 或者 array)
+	方法一: 通过两个指针，头指针、尾指针，依次判断是否相等。如果相等就是回文，否则就不是
 
-	1	->	2	-> 	3	-> 4	-> 	5
-	准备两个指针，快指针、慢指针。
-	快指针一次走两步，慢指针一次走一步。
+	方法二: 通过容器，放到栈中，依次判断
+
+[code](https://github.com/zhangwinning/dataStructure/blob/master/zuochengyun/stack_queue/isPalindromeArray.js)
+
+6、判断一个链表是否回文?
+	方法一: 这里需要借助容器,(stack 或者 array)
 	
-7、给一个链表，
+	方法二:准备两个指针，快指针、慢指针,快指针一次走两步，慢指针一次走一步。
+
+[code](https://github.com/zhangwinning/dataStructure/blob/master/zuochengyun/stack_queue/isPalindromeArray.js)
+
+7、给一个链表，和一个数值 num。小于num 的放在链表的左边，等于 num 的放在链表的中间，大于 num的放在链表的右边。
+	方法1️⃣:容器法(借助数组操作),把链表放到数组中，然后在数组中排好序(利用 partition ),然后再从数组中把各个节点连起来即可。
+	
+	
