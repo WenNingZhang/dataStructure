@@ -65,6 +65,7 @@ min_stack.js
 [code](https://github.com/zhangwinning/dataStructure/blob/master/zuochengyun/stack_queue/isPalindromeArray.js)
 
 7、给一个链表，和一个数值 num。小于num 的放在链表的左边，等于 num 的放在链表的中间，大于 num的放在链表的右边。
+	
 	方法1️⃣:容器法(借助数组操作),把链表放到数组中，然后在数组中排好序(利用 partition ),然后再从数组中把各个节点连起来即可。
 	
-	
+	方法2️⃣:利用六个指针，小于区的头、尾指针。等于区的头、尾指针、大于区的头、尾指针。开始如果
