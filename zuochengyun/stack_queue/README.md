@@ -69,3 +69,23 @@ min_stack.js
 	方法1️⃣:容器法(借助数组操作),把链表放到数组中，然后在数组中排好序(利用 partition ),然后再从数组中把各个节点连起来即可。
 	
 	方法2️⃣:利用六个指针，小于区的头、尾指针。等于区的头、尾指针、大于区的头、尾指针。开始如果
+
+[code](https://github.com/zhangwinning/dataStructure/blob/master/zuochengyun/stack_queue/smallerEqualBiggerList.js)
+
+8、给一个数组arr。任意两个不等，找到其中一个局部最小值。要求时间复杂度是 O(logN)
+
+	这个用到了二分查找的逻辑，函数 binarySearch 指明查找排好序的数组中的某个值，存在返回该值索引，否则返回 -1
+
+	给定一个数组。局部最小值一定存在。
+	[1,2,3,4,5,6]	==> 局部最小值是 1
+	[6,5,4,3,2,1]	==> 局部最小值是 1
+	[2,4,6,1,3,5]	==> 局部为2
+	[7,4,6,1,3,9]	==> 6 不是 ==> 因为 6两边都是最小，因此两边可以随便找
+	[7,10,6,1,3,9]	==> \		 /
+						 \		/
+						  \	   /
+
+						左右构成这种其实就是,其中必有局部最小值
+以下code 是求局部最大值。
+
+[code](https://github.com/zhangwinning/dataStructure/blob/master/zuochengyun/stack_queue/localMin.js)
