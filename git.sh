@@ -1,4 +1,4 @@
 git add -u
-git commit -m 'local min max --list' --amend --author="zhangwinning <1527841714@qq.com>"
+git commit -m 'binary-tree traversal' --amend --author="zhangwinning <1527841714@qq.com>"
 git pull
 git push
