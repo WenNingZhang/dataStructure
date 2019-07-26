@@ -146,24 +146,24 @@ head.right.right = new Node(10);
 head.right.right.left = new Node(9);
 head.right.right.right = new Node(11);
 
-// preOrderRecur(head)
+preOrderRecur(head)
 
-// console.log('=================分隔符=================')
+console.log('=================分隔符=================')
 
-// inOrderRecur(head)
+inOrderRecur(head)
 
-// console.log('=================分隔符=================')
+console.log('=================分隔符=================')
 
 postOrderRecur(head)
 
 console.log('=================分隔符=================')
 
-// preOrderUnRecur(head)
+preOrderUnRecur(head)
 
-// console.log('=================分隔符=================')
+console.log('=================分隔符=================')
 
-// inOrderUnRecur(head)
+inOrderUnRecur(head)
 
-// console.log('=================分隔符=================')
+console.log('=================分隔符=================')
 
 postOrderUnRecur(head)
