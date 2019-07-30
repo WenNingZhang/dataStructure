@@ -120,7 +120,7 @@ function postOrderUnRecur(head) {
     while(!stack.isEmpty()) {
         const node = stack.pop()
         help.push(node.value)
-        // 打印顺序是: 根、右、左,然后在把这些节点放入一个栈中。然后依次打印。就是 左孩子、右孩子、根
+        // 进 help栈 的顺序是: 根、右、左,然后在把这些节点放入一个栈中。然后依次打印。就是 左孩子、右孩子、根
         if (node.left) {
             stack.push(node.left)
         }

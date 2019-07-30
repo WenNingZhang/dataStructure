@@ -89,3 +89,9 @@ min_stack.js
 以下code 是求局部最大值。
 
 [code](https://github.com/zhangwinning/dataStructure/blob/master/zuochengyun/stack_queue/localMin.js)
+
+9、两个单链表相交的一系类问题
+	分析:如何判断一个链表是否有环?如果有，则返回第一个进入环的节点，没有则返回 null。
+	判断单链表是否存在环，有两种方式
+	1、容器法
+	2、快指针、慢指针法

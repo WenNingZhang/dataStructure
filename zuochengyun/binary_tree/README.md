@@ -30,7 +30,7 @@ function preOrderRecur(head) {
 后序遍历是第三次访问该节点时打印
 
 ```
-系统之所以可以通过递归打印树结构，是因为系统中有个强大的系统栈，可以对任意一节点 **访问三次**。
+系统之所以可以通过递归打印树结构。是因为系统中有个强大的系统栈，可以对任意一节点 **访问三次**。
 
 而我们虽然不能做到和**系统栈**如此强大，但是可以构造一个栈结构。遍历打印二叉树。
 
@@ -57,3 +57,5 @@ function preOrderRecur(head) {
 把前序遍历倒过来基本就后序遍历的非递归操作了
 
 [code](https://github.com/zhangwinning/dataStructure/blob/master/zuochengyun/binary_tree/PreInPosTraversal.js)
+
+### 二、判断一个树是否为搜索二叉树(BST)
