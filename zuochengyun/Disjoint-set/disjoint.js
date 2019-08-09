@@ -25,7 +25,6 @@ class UnionFindSet {
             path.push(element)
             element = this.fatherMap.get(element)
         }
-        console.log('===>', path, element)
         while(path.length > 0) {
             this.fatherMap.set(path.pop(), element)
         }
@@ -63,17 +62,4 @@ class UnionFindSet {
     }
 }
 
-
-const list = ['A', 'B', 'C', 'D', 'E']
-
-const map = new UnionFindSet(list)
-
-map.union('A', 'C')
-map.union('B', 'D')
-map.union('D', 'E')
-
-map.union('C', 'E')
-map.union('C', 'E')
-
-
-console.log(map)
+module.exports = UnionFindSet

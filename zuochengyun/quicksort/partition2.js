@@ -35,7 +35,9 @@ function __exec(arr, num) {
 	return arr
 }
 
+// Input: [2,0,2,1,1,0]
+// Output: [0,0,1,1,2,2]
 // partition(分区)
 let arr = [1,10,3,2,23,40,55,20,40,4,5,6,6,9]
-let num = 9
+let num = 23
 console.log('=====>', __exec(arr, num))

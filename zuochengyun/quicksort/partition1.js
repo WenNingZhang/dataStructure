@@ -30,7 +30,7 @@ function __exec(arr, num) {
 	return arr
 }
 
-// partition(分区)
+// 测试
 let arr = [1,10,3,2,23,40,55,20,40,4,5,6,6]
-let num = 9
+let num = 20
 console.log('=====>', __exec(arr, num))
