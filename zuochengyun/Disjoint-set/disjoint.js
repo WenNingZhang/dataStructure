@@ -74,4 +74,6 @@ map.union('D', 'E')
 
 map.union('C', 'E')
 map.union('C', 'E')
+
+
 console.log(map)
