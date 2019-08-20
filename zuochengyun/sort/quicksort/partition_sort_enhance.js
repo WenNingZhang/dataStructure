@@ -4,7 +4,10 @@ function process(arr, left, right) {
 	if (!arr || arr.length < 2) {
 		return 
 	}
+
 	if (left < right) {
+		// 增加排序的随机性，使得时间复杂度降低到 O(NlogN)
+		swap(arr, right, arr[Math.floor(Math.random() * (arr.length - 1))])
 		let result = partition(arr, left, right)
 		process(arr, left, result[0]-1)
 		process(arr, result[1] + 1, right)
@@ -35,11 +38,10 @@ function partition(arr, left, right) {
 			i++
 		}
 	}
-
 	swap(arr, right, more)
 	return [less+1, more]
 }
 
-let arr = [1,10,3,2]
+let arr = [1,10,3,2,23,40,55,20,40,4,5,6,6,9]
 console.log('=====>', process(arr, 0, arr.length - 1))
 
