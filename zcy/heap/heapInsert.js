@@ -11,20 +11,16 @@ function heapInsert(arr, index) {
         swap(arr, index, parseInt((index - 1)/2) )
         index = parseInt((index - 1)/2)
     }
-    return arr
 }
 
 function run(nums) {
+     //heapSize 表示 1、堆的大小 2、下一个元素应该插入的位置
     let heapSize = 0;
-    let arr = [];
-    nums.forEach(num => {
-        arr.push(num);
-        arr = heapInsert(arr, heapSize);
-        heapSize++;     // 1、堆的大小 2、下一个元素应该插入的位置
-    });
-    return arr;
+    for(let i = 0; i < nums.length; i++) {
+        heapInsert(nums, heapSize++);
+    }
+    return nums;
 }
 
-const nums = [1, 0, 5, 4, 3];
-let arr = run(nums);
-console.log(arr)
+const nums = [1,10,30,4,1,2,3,4,5,56,7,7,12,11,100,20,30,40,50,60]
+console.log('after heapInsert arr is:', run(nums))

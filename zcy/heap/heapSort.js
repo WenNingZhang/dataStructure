@@ -7,13 +7,12 @@ function swap(arr, i, j) {
 }
 
 // 构建大根堆过程
-function add(arr, index) {
+function heapInsert(arr, index) {
     while(arr[index] > arr[parseInt((index - 1) / 2)]) {
         swap(arr, index, parseInt((index - 1) /2 ))
         index = parseInt((index - 1) / 2)
     }
 }
-
 /**
  * 
  * @param {*} arr 堆数组
@@ -37,18 +36,16 @@ function heapify(arr, i, heapSize) {
 
 function run (nums) {
     let heapSize = 0
-    let arr = []
     nums.forEach(element => {
-        arr.push(element)
-        add(arr, heapSize++)
+        heapInsert(nums, heapSize++)
     });
 
     while(heapSize > 0) {
-        swap(arr, 0, --heapSize)
-        heapify(arr, 0, heapSize)
+        swap(nums, 0, --heapSize)
+        heapify(nums, 0, heapSize)
     }
-    console.log('use heap sort is :', arr)
+    return nums
 }
 
 const nums = [1,10,30,4,1,2,3,4,5,56,7,7,12,11,100,20,30,40,50,60]
-run(nums)
+console.log('use heap sort is :', run(nums))

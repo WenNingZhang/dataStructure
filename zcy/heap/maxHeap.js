@@ -1,3 +1,9 @@
+function swap(arr, i, j) {
+    let tem = arr[i]
+    arr[i] = arr[j]
+    arr[j] = tem
+}
+
 function heapify(arr, i, heapSize) {
     let lc = i * 2 + 1
     while(lc < heapSize) {
@@ -11,14 +17,6 @@ function heapify(arr, i, heapSize) {
         i = largest
         lc = i * 2 + 1
     }
-}
-
-
-// 交换函数
-function swap(arr, i, j) {
-    let tem = arr[i]
-    arr[i] = arr[j]
-    arr[j] = tem
 }
 
 // 构建大根堆过程
@@ -72,5 +70,5 @@ module.exports = maxHeap
 // });
 
 // console.log(heap)
-// console.log(heap.pop())
+// console.log('弹出堆顶的元素是: ', heap.pop())
 // console.log(heap)
