@@ -1,4 +1,6 @@
+#!/bin/bash -e
+commit_message="$1"
 git add -u
-git commit -m 'the median by two heap' --amend --author="zhangwinning <1527841714@qq.com>"
-git pull
+git reset -- git.sh
+git commit -m "$commit_message"
 git push
