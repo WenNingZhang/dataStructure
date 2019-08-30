@@ -5,13 +5,12 @@ function run(nums, left, right) {
         return nums[left];
     }
 
-    let paras = 0;
     const mid = Math.floor((left + right) / 2);
     run(nums, left, mid);
     run(nums, mid + 1, right);
 
     merge(nums, left, mid, right);
-
+    console.log('====>', list)
     return list.length
 }
 
@@ -23,19 +22,20 @@ function merge(nums, left, mid, right) {
     let i = left;
     let j = mid + 1;
 
+    console.log('===>', i, j)
     while (i <= mid && j <= right) {
-        if (nums[i] > nums[j]) {
-            for(let k = i; k <= mid; k++) {
-                if (nums[k] > 2 * nums[j]) {
-                    list.push([nums[k], nums[j]])
-                }
+        for(let k = i; k <= mid; k++) {
+            if (nums[k] > 2 * nums[j]) {
+                list.push([nums[k], nums[j]])
             }
+        }
+        if (nums[i] >= nums[j]) {
             help[n++] = nums[j++];
         } else {
             help[n++] = nums[i++];
         }
     }
-
+    console.log('--->', help)
     while (i <= mid) {
         help[n++] = nums[i++];
     }
@@ -51,7 +51,7 @@ function merge(nums, left, mid, right) {
 
 }
 
-const nums = [1,3,2,3,1]
+const nums = [233,2001,234,2006]
 
 //  [3,2]、[4、2] 
 console.log(run(nums, 0, nums.length - 1))
