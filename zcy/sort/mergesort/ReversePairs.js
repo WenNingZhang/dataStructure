@@ -1,5 +1,5 @@
 
-const list = []
+let number = 0
 function run(nums, left, right) {
     if (left == right) {
         return nums[left];
@@ -10,8 +10,8 @@ function run(nums, left, right) {
     run(nums, mid + 1, right);
 
     merge(nums, left, mid, right);
-    console.log('====>', list)
-    return list.length
+    console.log('====>', number)
+    return number
 }
 
 
@@ -26,16 +26,13 @@ function merge(nums, left, mid, right) {
     while (i <= mid && j <= right) {
         for(let k = i; k <= mid; k++) {
             if (nums[k] > 2 * nums[j]) {
-                list.push([nums[k], nums[j]])
+                // list.push([nums[k], nums[j]])
+                number++
             }
         }
-        if (nums[i] >= nums[j]) {
-            help[n++] = nums[j++];
-        } else {
-            help[n++] = nums[i++];
-        }
+
+        help[n++] = nums[j++];
     }
-    console.log('--->', help)
     while (i <= mid) {
         help[n++] = nums[i++];
     }
