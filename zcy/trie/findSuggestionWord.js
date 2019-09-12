@@ -35,7 +35,7 @@ function add(root, str) {
 function find_prefix(root, str) {
     let node = root
     if (!root || !root.children || root.children.length === 0) {
-        return [false, 0]
+        return false
     }
     const chars = str.split('')
 
@@ -51,37 +51,9 @@ function find_prefix(root, str) {
             }
         }
         if (char_not_find) {
-            return [false, 0]
+            return false
         }
     }
-    return [true, node.counter]
-}
-
-
-function find_prefix(root, str) {
-    let node = root
-    if (!root || !root.children || root.children.length === 0) {
-        return [false, 0]
-    }
-    const chars = str.split('')
-
-    for (let i = 0; i < chars.length; i++) {
-        let char_not_find = true
-        const char = chars[i]
-        for (let j = 0; j < node.children.length; j++) {
-            const child = node.children[j]
-            if (child.char === char) {
-                char_not_find = false
-                node = child
-                break
-            }
-        }
-        if (char_not_find) {
-            return [false, 0]
-        }
-    }
-    const counter = node.counter
-    let a =  [true, counter]
 
     console.log('## 遍历node 子节点，进行查找')
 
@@ -97,7 +69,6 @@ function find_prefix(root, str) {
     };
 
     allWordsHelper(str, node);
-
     return allWords
 }
 
@@ -108,4 +79,5 @@ add(root, 'bid')
 add(root, 'bell')
 add(root, 'bear')
 
-console.log(find_prefix(root, 'be'))
+const prefix = 'be'
+console.log(`${prefix} prefix words is : `, find_prefix(root, prefix))
