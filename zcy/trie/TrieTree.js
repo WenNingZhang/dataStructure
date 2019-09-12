@@ -96,24 +96,24 @@ class Trie {
 }
 
 const trie = new Trie();
-console.log(trie.search("zuo"));
-trie.insert("zuo");
-console.log(trie.search("zuo"));
-trie.delete("zuo");
-console.log(trie.search("zuo"));
+console.log(trie.search("zhang"));
+trie.insert("zhang");
+console.log(trie.search("zhang"));
+trie.delete("zhang");
+console.log(trie.search("zhang"));
 
-trie.insert("zuo");
-trie.insert("zuo");
-trie.delete("zuo");
+trie.insert("zhan");
+trie.insert("zhan");
+trie.delete("zhan");
 
-console.log(trie.search("zuo"))
+console.log(trie.search("zhan"))
 
 
-trie.insert("zuoa");
-trie.insert("zuoac");
-trie.insert("zuoab");
-trie.insert("zuoad");
-trie.delete("zuoa");
+trie.insert("zhana");
+trie.insert("zhanb");
+trie.insert("zhanc");
+trie.insert("zhand");
+trie.delete("zhane");
 
-console.log(trie.search("zuoa"))
-console.log(trie.prefixNumber("zuo"))
+console.log(trie.search("zhana"))
+console.log(trie.prefixNumber("zhan"))

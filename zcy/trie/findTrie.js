@@ -85,7 +85,6 @@ function find_prefix(root, str) {
 
     console.log('## 遍历node 子节点，进行查找')
 
-    // console.log('==>', JSON.stringify(node, null, 2))
     var allWords = [];
     var allWordsHelper = function (stringSoFar, tree) {
         tree.children.forEach(child => {
@@ -99,16 +98,14 @@ function find_prefix(root, str) {
 
     allWordsHelper(str, node);
 
-    console.log('======>', allWords)
-    
+    return allWords
 }
 
 const root = new TrieNode('*')
-add(root, "hackathon")
-add(root, 'hack')
+add(root, "buy")
+add(root, 'bull')
+add(root, 'bid')
+add(root, 'bell')
+add(root, 'bear')
 
-// console.log(find_prefix(root, 'hac'))
-// console.log(find_prefix(root, 'hack'))
-// console.log(find_prefix(root, 'hackathon'))
-console.log(find_prefix(root, 'ha'))
-// console.log(find_prefix(root, 'hammer'))
+console.log(find_prefix(root, 'be'))
