@@ -1,4 +1,10 @@
-
+/**
+ * 使用 bfprt 算法计算top K 问题，时间复杂度保持在 O(N)。而是用 partition 的思想
+ * 时间复杂度其实也是 O(N)，但是是期望值是O(N)。而使用 bfprt 算法是严格的O(N)
+ * @param arr
+ * @param k
+ * @returns {*}
+ */
 function getMinKNumsByBFPRT(arr, k) {
     if (k < 1 || k > arr.length) {
         return arr;
@@ -6,23 +12,23 @@ function getMinKNumsByBFPRT(arr, k) {
 
     let minKth = getMinKthByBFPRT(arr, k);
 
-    console.log('===>', minKth)
-    // int[] res = new int[k];
-    // int index = 0;
-    // for (int i = 0; i != arr.length; i++) {
-    //     if (arr[i] < minKth) {
-    //         res[index++] = arr[i];
-    //     }
-    // }
-    // for (; index != res.length; index++) {
-    //     res[index] = minKth;
-    // }
-    // return res;
+    console.log('the topK value is : ', minKth);
+
+    const res = []
+    let index = 0;
+    for (let i = 0; i !== arr.length; i++) {
+        if (arr[i] < minKth) {
+            res[index++] = arr[i];
+        }
+    }
+    for (; index !== res.length; index++) {
+        res[index] = minKth;
+    }
+    return res;
 }
 
 function getMinKthByBFPRT(arr, k) {
-    console.log('===>', arr, 0, arr.length - 1,k- 1)
-    return select(arr, 0, arr.length - 1,k- 1);
+    return select(arr, 0, arr.length - 1, k - 1);
 }
 
 /**
@@ -38,8 +44,7 @@ function select(arr, begin, end, i) {
         return arr[begin];
     }
     let pivot = medianOfMedians(arr, begin, end);
-    console.log('==>', pivot)
-    let {small, big} =  partition(arr, begin, end, pivot);
+    let {small, big} = partition(arr, begin, end, pivot);
     if (i >= small && i <= big) {
         return arr[i];
     } else if (i < small) {
@@ -49,52 +54,46 @@ function select(arr, begin, end, i) {
     }
 }
 
-function partition(arr, begin, end) {
+function partition(arr, begin, end, pivot) {
     let small = begin - 1;
     let big = end;
     let cur = begin;
     while (cur < big) {
-        if (arr[cur] < arr[end]) {
+        if (arr[cur] < pivot) {
             swap(arr, ++small, cur++);
-        } else if (arr[cur] > arr[end]) {
+        } else if (arr[cur] > pivot) {
             swap(arr, cur, --big);
         } else {
             cur++;
         }
     }
-    swap(arr, big, end);
     // 在这个分区中
     return {
         small: small + 1,
-        big: big
+        big: big - 1
     };
 }
 
-function medianOfMedians(arr,begin,end) {
+function medianOfMedians(arr, begin, end) {
     let num = end - begin + 1;
     let offset = num % 5 === 0 ? 0 : 1;
-    let length = num / 5 + offset
-    let mArr = []
-    for(let i =0 ; i < length; i++) {
-        mArr[i] = i
+    let length = parseInt(num / 5) + offset;
+    let mArr = [];
+    for (let i = 0; i < length; i++) {
+        mArr[i] = 0;
     }
-    console.log('===>', mArr)
-    for (let  i = 0; i < mArr.length; i++) {
+    for (let i = 0; i < mArr.length; i++) {
         let beginI = begin + i * 5;
         let endI = beginI + 4;
         mArr[i] = getMedian(arr, beginI, Math.min(end, endI));
     }
-    console.log('==>', mArr)
-    return select(mArr, 0, mArr.length - 1, mArr.length / 2);
+    return select(mArr, 0, mArr.length - 1, parseInt(mArr.length / 2));
 }
 
 function getMedian(arr, begin, end) {
-    console.log('===')
     insertionSort(arr, begin, end);
-    // Array.sort(arr)
     let sum = end + begin;
     let mid = parseInt(sum / 2) + parseInt(sum % 2);
-    console.log('####', mid, arr[mid])
     return arr[mid];
 }
 
@@ -110,6 +109,7 @@ function insertionSort(arr, begin, end) {
         }
     }
 }
+
 // 交换函数
 function swap(arr, i, j) {
     let tem = arr[i];
@@ -120,4 +120,5 @@ function swap(arr, i, j) {
 const nums = [6, 9, 1, 3, 1, 2, 2, 5, 6, 1, 3, 5, 9, 7, 2, 5, 6, 1, 9];
 // sorted : { 1, 1, 1, 1, 2, 2, 2, 3, 3, 5, 5, 5, 6, 6, 6, 7, 9, 9, 9 }
 // console.log(nums);
-console.log('use bfprt get value:', getMinKNumsByBFPRT(nums, 10))
+const k = 16
+console.log('use bfprt get optimal solution:', getMinKNumsByBFPRT(nums, k));
