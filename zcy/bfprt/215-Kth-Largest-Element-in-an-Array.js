@@ -34,12 +34,12 @@ function topK(arr, begin, end, i) {
     }
     let {small, big} = partition(arr, begin, end);
 
-    if (i >= big && i <= small) {
+    if (i >= small && i <= big) {
         return arr[i];
-    } else if (i < big) {
-        return topK(arr, begin, big - 1, i);
+    } else if (i < small) {
+        return topK(arr, begin, small - 1, i);
     } else {
-        return topK(arr, small + 1, end, i);
+        return topK(arr, big + 1, end, i);
     }
 }
 

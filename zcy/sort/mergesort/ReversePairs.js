@@ -10,7 +10,7 @@ function run(nums, left, right) {
     run(nums, mid + 1, right);
 
     merge(nums, left, mid, right);
-    console.log('====>', number)
+    // console.log('====>', number)
     return number
 }
 
@@ -22,11 +22,9 @@ function merge(nums, left, mid, right) {
     let i = left;
     let j = mid + 1;
 
-    console.log('===>', i, j)
     while (i <= mid && j <= right) {
         for(let k = i; k <= mid; k++) {
             if (nums[k] > 2 * nums[j]) {
-                // list.push([nums[k], nums[j]])
                 number++
             }
         }
@@ -48,7 +46,7 @@ function merge(nums, left, mid, right) {
 
 }
 
-const nums = [233,2001,234,2006]
+const nums = [1,3,4,2,5]
 
-//  [3,2]、[4、2] 
+//  [3,2]、[4、2]
 console.log(run(nums, 0, nums.length - 1))

@@ -27,6 +27,6 @@ function createGraph(matrix) {
 }
 
 module.exports = createGraph
-// const matrix = [[200, 1, 2],[200, 2, 3],[50, 3, 1]]
+const matrix = [[200, 1, 2],[200, 2, 3],[50, 3, 1]]
 
-// console.log('===>', createGraph(matrix))
+console.log('===>', createGraph(matrix))

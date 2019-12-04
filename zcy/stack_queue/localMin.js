@@ -2,7 +2,7 @@
 // 二分查找某个排好序的数组。
 function binarySearch(arr, num, start, end) {
     if (start <= end) {
-        const mid = parseInt((start + end) / 2)
+        const mid = Math.floor((start + end) / 2)
         if (arr[mid] === num) {
             return mid
         }else if (num < arr[mid]) {
@@ -37,7 +37,7 @@ function localMin(arr) {
 
     // 第一个和最后一个都不是局部最大值
     const __binarySearch = (arr, start, end) => {
-        const mid = parseInt((start + end) /2)
+        const mid = Math.floor((start + end) /2)
         if (arr[mid] > arr[mid+1] && arr[mid] > arr[mid-1]) {
             return mid
         }else if (arr[mid] > arr[mid + 1]) {

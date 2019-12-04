@@ -33,7 +33,7 @@ class UnionFindSet {
 //  查看样本a 和样本b 是否为同一个集合
     isSameSet(a, b) {
         if (this.elementMap.has(a) && this.elementMap.has(b)) {
-            return this.findHead(this.elementMap.get(a)) == this.findHead(this.elementMap.get(b))
+            return this.findHead(this.elementMap.get(a)) === this.findHead(this.elementMap.get(b))
         }
         return false
     }

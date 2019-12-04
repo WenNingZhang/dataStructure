@@ -6,11 +6,12 @@ class Node {
         this.next = null
     }
 }
-
+// head next
+// 10 -> 1 -> 20
 function reverseList(head) {
     let pre = null
     let next = null
-    while(head != null) {
+    while(head !== null) {
         next = head.next
         head.next = pre
         pre = head
@@ -28,5 +29,5 @@ node1.next = node2
 node2.next = node3
 node3.next = null
 
-console.log('original list',JSON.stringify(node1, null, 2))
+console.log('original list : ',JSON.stringify(node1, null, 2))
 console.log('reverseList result: ', JSON.stringify(reverseList(node1), null, 2))

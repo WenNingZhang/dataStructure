@@ -12,6 +12,7 @@ function bubbleSort(arr) {
             if (arr[i] > arr[j])
                 swap(arr, i, j);
         }
+        console.warn(arr)
     }
 }
 

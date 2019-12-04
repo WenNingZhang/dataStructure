@@ -3,7 +3,7 @@ const createGraph = require('../graphGenerator')
 
 /**
  * 找到与源节点相邻的边，然后从这些边中找到一条最小的边，把与该边相邻的
- * @param {*} head 
+ * @param {*} head
  */
 function dijkstra1(head) {
     const distanceMap = new Map()   // 存储节点的距离
@@ -64,3 +64,5 @@ const result = dijkstra1(node)
 for(let [key, value] of result) {
     console.log(key['value'] + ':' + value)
 }
+
+// infect(感染上，感染下，感染左，感染右)

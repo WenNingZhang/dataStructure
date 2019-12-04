@@ -9,8 +9,8 @@ function sortedTopology(graph) {
     const zeroInQueue = []  // 入度为 0 的节点存放的位置
 
     for (let node of graph.nodes.values()) {
-        inMap.set(node, node.indegree)
-        if (node.indegree === 0) {
+        inMap.set(node, node.indegree)  // 每个节点的入度记录下
+        if (node.indegree === 0) {      // 如果该节点的入度是0，保存到 zeroInQueue
             zeroInQueue.push(node)
         }
     }

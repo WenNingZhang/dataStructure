@@ -69,9 +69,11 @@ queue.push(4)
 queue.push(5)
 
 console.log(queue)
+
+// console.log(queue)
 console.log(queue.pop())
-console.log(queue)
+// console.log(queue)
 console.log(queue.pop())
 console.log(queue.peek())
 console.log(queue.pop())
-console.log(queue)
+// console.log(queue)

@@ -2,7 +2,7 @@
 // 快速排序方法
 function process(arr, left, right) {
 	if (!arr || arr.length < 2) {
-		return 
+		return
 	}
 
 	if (left < right) {
@@ -25,8 +25,8 @@ function swap(arr, left, right) {
 function partition(arr, left, right) {
 	let i = left
 	let less = left - 1
-	let more = right 
-	
+	let more = right
+
 	while(i < more)	 {
 		if (arr[i] < arr[right]) {
 			swap(arr, ++less, i++)
@@ -41,6 +41,6 @@ function partition(arr, left, right) {
 	return [less+1, more]
 }
 
-let arr = [1,10,3,2]
+let arr = [ 1, 6, 3, 2, 5, 4, 40, 20, 6, 23, 10, 55, 40 ]
 console.log('=====>', process(arr, 0, arr.length - 1))
 

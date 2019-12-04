@@ -8,13 +8,13 @@ function swap(arr, i, j) {
 
 // 构建大根堆过程
 function heapInsert(arr, index) {
-    while(arr[index] > arr[parseInt((index - 1) / 2)]) {
-        swap(arr, index, parseInt((index - 1) /2 ))
-        index = parseInt((index - 1) / 2)
+    while(arr[index] > arr[Math.floor((index - 1) / 2)]) {
+        swap(arr, index, Math.floor((index - 1) /2 ))
+        index = Math.floor((index - 1) / 2)
     }
 }
 /**
- * 
+ *
  * @param {*} arr 堆数组
  * @param {*} i 需要调整的堆位置
  * @param {*} heapSize 1、堆大小    2、待插入元素的位置

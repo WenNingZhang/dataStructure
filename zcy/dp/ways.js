@@ -4,18 +4,18 @@ class ways {
         this.n = n  // 从 1 到 n 表示总共多少步要走
         this.f = f  // 起始位置是 f
         this.to = to    // 终止位置
-        this.k = k      // 需要走多少步
+        this.k = k      // 剩余走多少步
 
         this.map = new Map()    // 傻缓存记录已经走过的路
     }
-    
+
     //  暴力递归
     way1() {
         return this.__way1(this.n, this.to, this.f, this.k)
     }
 
     /**
-     * 
+     * 当前在 cur 位置，还剩rest步可以走，请返回多少种方法。
      * @param {*} n 总共是多少步数
      * @param {*} to   到达哪一步
      * @param {*} cur   当前步数是哪里
@@ -42,10 +42,10 @@ class ways {
     }
     /**
      * 使用一个傻缓存的方法。记录已经走得位置
-     * @param {*} n 
-     * @param {*} to 
-     * @param {*} cur 
-     * @param {*} rest 
+     * @param {*} n
+     * @param {*} to
+     * @param {*} cur
+     * @param {*} rest
      */
     __way2(n, to, cur, rest) {
         const key = cur + '_' + rest
@@ -72,6 +72,7 @@ class ways {
 
     __way3(n, from, to, k) {
         const dp = __init2Array(k, n)
+        console.log(dp, k, n)
         dp[0][to] = 1
         for(let row = 1; row <= k; row++) {
             for(let col = 1; col <= n; col++) {

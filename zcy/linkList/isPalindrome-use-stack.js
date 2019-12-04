@@ -4,7 +4,7 @@ class Stack {
         this.next = 0	// 1、表示栈大小	2、表示下一个入栈的数放的位置
     }
 
-    //  返回栈顶元素 
+    //  返回栈顶元素
     peek() {
         if (this.next === 0) {
             return null

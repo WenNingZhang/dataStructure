@@ -1,5 +1,3 @@
-
-
 function run(arr, left, right) {
     if (left == right) {
         return arr[left];
@@ -11,23 +9,25 @@ function run(arr, left, right) {
 
     let value = merge(arr, left, mid, right);
 
-    return value
+    return value;
 }
-let value = 0
-function merge(arr, left, mid, right) {
-    const help = []
-    let n = 0
 
-    let i = left
-    let j = mid + 1
+let value = 0;
+
+function merge(arr, left, mid, right) {
+    const help = [];
+    let n = 0;
+
+    let i = left;
+    let j = mid + 1;
 
     while (i <= mid && j <= right) {
         if (arr[i] < arr[j]) {
             //    添加小和值
-            value += (arr[i] * (right - j + 1))
-            help[n++] = arr[i++]
+            value += (arr[i] * (right - j + 1));
+            help[n++] = arr[i++];
         } else {
-            help[n++] = arr[j++]
+            help[n++] = arr[j++];
         }
     }
 
@@ -47,6 +47,6 @@ function merge(arr, left, mid, right) {
     return value;
 }
 
-const arr = [1, 3, 4, 2, 5]
+const arr = [1, 3, 4, 2, 5];
 
-console.log(`${arr} 小和为:`, run(arr, 0, arr.length - 1))
+console.log(`${arr} 小和为:`, run(arr, 0, arr.length - 1));
