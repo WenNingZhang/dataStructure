@@ -5,7 +5,7 @@
 
 // 当以i位置的字符结尾时，最长无重复字符子串的长度是多少?
 
-// 用张Map表表示之前出现的字符列表。当第 i 位置的字符是 A 时, (i-1)是i位置的前一个位置， pre 表示必须str[i-1]字符结尾的情况下，最长无重复字符子串开始位置的前一个位置。初始时为 -1。
+// 用张Map表表示最近之前出现的字符列表。当第 i 位置的字符是 A 时, (i-1)是i位置的前一个位置， pre 表示必须str[i-1]字符结尾的情况下，最长无重复字符子串开始位置的前一个位置。初始时为 -1。
 // pre 表示必须str[i-1]字符结尾的情况下，最长无重复字符的子串开始位置的前一个位置。初始时为 -1。
 // 整形变量len，记录以每一个字符结尾的情况下，最长无重复字符子串长度的最大值。初始时,len = 0。
 // map表 中 key 表示每个字符，value 为这个字符最近一次出现的位置。
@@ -26,9 +26,10 @@ function maxUnique(str) {
         len = Math.max(len, curLen);
         map[chars[i]] = i;
     }
+    console.log(map)
     return len;
 }
 
 console.log(maxUnique("abcd"))
-console.log(maxUnique("aabca"))
-console.log(maxUnique("aaaa"))
+// console.log(maxUnique("aabca"))
+// console.log(maxUnique("aaaa"))

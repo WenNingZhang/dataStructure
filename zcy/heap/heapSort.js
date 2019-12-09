@@ -39,7 +39,7 @@ function run (nums) {
     nums.forEach(element => {
         heapInsert(nums, heapSize++)
     });
-
+    console.log(nums)
     while(heapSize > 0) {
         swap(nums, 0, --heapSize)
         heapify(nums, 0, heapSize)

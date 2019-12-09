@@ -497,3 +497,72 @@
 // }
 
 
+// function __maxArea(heights) {
+//     let left = 0
+//     let right = heights.length - 1
+//     let max = 0
+//     while (left < right) {
+//         max = Math.max(max, (right-left) * Math.min(heights[right], heights[left]))
+//         if (heights[left] < heights[right]) {
+//             left++
+//         }else {
+//             right--
+//         }
+//     }
+//     return max
+// }
+//
+// const heights = [1,8,6,2,5,4,50,300,7]
+// console.log(__maxArea(heights))
+
+
+// function add(num1, num2) {
+//     let i = num1.length - 1
+//     let j = num2.length - 1
+//
+//     let carry = 0
+//     let res = ''
+//     while (i >= 0 || j >=0) {
+//         let n1 = i >= 0 ? num1.charAt(i) - '0' : 0
+//         let n2 = j >= 0 ? num2.charAt(j) - '0' : 0
+//         let tmp = n1 + n2 + carry
+//         carry = parseInt(tmp/10)
+//         res += tmp % 10
+//         i--
+//         j--
+//     }
+//     if (carry === 1) res += 1
+//     return res.split('').reverse().join('')
+// }
+//
+//
+// let num1 = '123';
+// let num2 = '971111';
+//
+// console.log(add(num1, num2));
+
+
+function add(num1, num2) {
+    let i = num1.length - 1
+    let j = num2.length - 1
+
+    let res = ''
+    let carry = 0
+    while (i >= 0 || j >=0) {
+        let n1 = i >= 0 ? num1.charAt(i) - '0' : 0
+        let n2 = j >= 0 ? num2.charAt(j) - '0' : 0
+        let tmp = n1 + n2 + carry
+        carry = parseInt(tmp/10)
+        res += tmp % 10
+        i--
+        j--
+    }
+    if (carry === 1) res += 1
+    return res.split('').reverse().join('')
+}
+
+
+let num1 = '123';
+let num2 = '971111';
+
+console.log(add(num1, num2));

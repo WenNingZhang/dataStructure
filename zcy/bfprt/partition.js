@@ -36,8 +36,8 @@ function partition(arr, begin, end) {
  * @returns {*}
  */
 function topK(arr, begin, end, i) {
-    if (begin === end) {
-        return arr[begin];
+    if (begin >= end) {
+        return -1;
     }
     let {small, big} = partition(arr, begin, end);
 
@@ -50,10 +50,11 @@ function topK(arr, begin, end, i) {
     }
 }
 
-const nums = [6, 9, 1, 3, 1, 2, 2, 5, 6, 1, 3, 5, 9, 7, 2, 5, 6, 1, 9];
+// const nums = [6, 9, 1, 3, 1, 2, 2, 5, 6, 1, 3, 5, 9, 7, 2, 5, 6, 1, 9];
 // sorted : { 1, 1, 1, 1, 2, 2, 2, 3, 3, 5, 5, 5, 6, 6, 6, 7, 9, 9, 9 }
 
-const k = 16;
-const kValue = topK(nums, 0, nums.length - 1, k - 1);
+const nums = [3,2,1,5,6,4]
+const k = 2;
+const kValue = topK(nums, 0, nums.length - 1, nums.length - k);
 console.log('use partition :', kValue);
 // console.log(nums);
