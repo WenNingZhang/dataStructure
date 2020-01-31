@@ -29,11 +29,11 @@ function mergeInterval(intervals) {
             i++;
             right = Math.max(right, intervals[i][1]);
         }
-        res.push({left, right});
+        res.push([left, right]);
         i++;
     }
-    console.log(res)
+    return res
 }
 
-let a = [[1,3],[2,6],[8,10],[15,18]]
+let a = [[1,3],[2,6],[5,10],[15,18]]
 console.log(mergeInterval(a))

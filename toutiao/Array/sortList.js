@@ -70,6 +70,8 @@ function sortList(head) {
         h = h.next;
     }
 
+    // 跳出上面循环后，说明left或者 right 有且仅有一个是 null的。如果 left 是 null
+    // 则用 h 把连到right。否则如果right 是null 的话，则把 h 连到left
     h.next = left ? left : right;
     console.log(res);
     return res.next;

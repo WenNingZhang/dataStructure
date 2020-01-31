@@ -25,7 +25,6 @@ function search(nums, target) {
                 end = mid - 1;
             }
         }
-
     }
     return -1;
 }

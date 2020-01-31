@@ -29,6 +29,7 @@
 function checkInclusion(s1, s2) {
     s1 = sort(s1);
     for (let i = 0; i <= s2.length - s1.length; i++) {
+            console.log('----->', s1, sort(s2.substring(i, i + s1.length)), i, i + s1.length)
         if (s1 === sort(s2.substring(i, i + s1.length))) {
             return true;
         }
@@ -38,15 +39,16 @@ function checkInclusion(s1, s2) {
 
 function sort(s) {
     let strs = s.split("")
-    strs.sort(strs)
+    strs.sort()
     return strs.join("")
 }
 
-let s1 = "ab"
-let s2 = "eidbaooo"
+let s1 = "adc"
+let s2 = "dcda"
 
 console.log(checkInclusion(s1, s2))
 
+console.log(s1, s2)
 
 // let s3= "ab"
 // let s4 = "eidboaoo"

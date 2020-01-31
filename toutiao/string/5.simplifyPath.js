@@ -62,33 +62,52 @@
     }
  **/
 
-function simplifyPath(path) {
-    let s = path.split('/');
-    console.log(s)
-    const list = []
-    for (let i = 0; i < s.length; i++) {
-        if (list.length !== 0&& s[i] === "..") {
-            list.pop();
-        } else if (s[i] !== "" && s[i] !== "." && s[i] !== "..") {
-            list.push(s[i]);
+// function simplifyPath(path) {
+//     let s = path.split('/');
+//     console.log(s)
+//     const list = []
+//     for (let i = 0; i < s.length; i++) {
+//         if (list.length !== 0&& s[i] === "..") {
+//             list.pop();
+//         } else if (s[i] !== "" && s[i] !== "." && s[i] !== "..") {
+//             list.push(s[i]);
+//         }
+//     }
+//     console.log(list)
+//     if (list.length === 0)
+//         return "/";
+//
+//     const res = [];
+//
+//     for (let i = 0; i < list.length; i++) {
+//         res.push("/" + list[i]);
+//     }
+//
+//     return res.join("");
+// }
+//
+// // const path = "/a//b////c/d//././/..";
+// // console.log(simplifyPath(path));
+//
+// const path1 = "/a/../../b/../c//.//"
+//
+// console.log(simplifyPath(path1))
+
+var simplifyPath = function(path) {
+    const paths = path.split('/');
+    const result = [];
+    for (let i = 0; i < paths.length; i++) {
+        if (paths[i] === '..') {
+            result.pop();   // 从队尾出栈
+        } else if (paths[i] === '' || paths[i] === '.') {
+            continue;
+        } else {
+            result.push(paths[i]);
         }
     }
-    console.log(list)
-    if (list.length === 0)
-        return "/";
+    return '/' + result.join('/');
+};
 
-    const res = [];
+let path = "/a/../../b/../c//.//"
 
-    for (let i = 0; i < list.length; i++) {
-        res.push("/" + list[i]);
-    }
-
-    return res.join("");
-}
-
-// const path = "/a//b////c/d//././/..";
-// console.log(simplifyPath(path));
-
-const path1 = "/a/../../b/../c//.//"
-
-console.log(simplifyPath(path1))
+console.log(simplifyPath(path))

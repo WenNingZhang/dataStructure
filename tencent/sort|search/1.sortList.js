@@ -106,6 +106,7 @@ function __sortList(head) {
     return res.next
 }
 
+// 相当于split 操作。不过我觉的 cut 操作更准确些，将链表的head切掉前 size 个节点。并返回后半部分的链表头部。
 function __cut(head, size) {
     let curr = head
     while(--size && curr) {

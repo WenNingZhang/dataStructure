@@ -114,8 +114,8 @@ function matches(s1map, s2map) {
 }
 
 
-let s1 = "ab"
-let s2 = "eidbaooo"
+let s1 = "adc"
+let s2 = "dcda"
 
 console.log(checkInclusion(s1, s2))
 

@@ -59,3 +59,32 @@ public String addStrings(String num1, String num2) {
 
 
 **/
+
+
+
+var multiply = function(s1, s2) {
+    if (s1 === '0' || s2 === '0') return '0';
+    let m = s1.length,
+        n = s2.length;
+    let mp = Array(m + n - 1).fill(0);
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            mp[i + j] += (+s1[m - 1 - i] * +s2[n - 1 - j]);
+        }
+    }
+
+    // 以上只是把数都加上去，还没进位呢。
+    // console.log(mp)
+    for (let i = 0; i < mp.length - 1; i++) {
+        mp[i + 1] += Math.floor(mp[i] / 10);
+        mp[i] %= 10;
+    }
+    console.log(mp)
+    return mp.reverse().join('');
+}
+
+
+let s1 = '123'
+let s2 = '45'
+
+console.log(multiply(s1, s2))
