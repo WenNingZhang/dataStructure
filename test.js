@@ -1,69 +1,61 @@
+// 编程题：KOA洋葱圈中间件模型
+// 实现一个中间件组合函数compose，接口格式如下：
+
 /**
- * 异或操作
- * a ^ b 对于每个bit 位。当两个操作数对应的 bit 位有且只有一个为 1 时。结果为 1 。否则就为 0
+ * 中间件组合函数
  *
- *  问题的简单版本: 一个数组中除了一个数字之外，其他数字都出现了两次。
- *  因为任意两个相等的数值取异或操作后，都为 0
- **/
-
-
-function __search(nums) {
-    return nums.reduce((result, cur) => {
-        return result ^ cur
-    })
-}
-
-
-const nums = [1, 20, 20]
-
-console.log(__search(nums))
-
-
-/**
- * plus 版本
- * 一个整形数组中除了两个数字之外，其他数字都出现了两次。请写程序找出这两个只出现一次的数字
- * 要求时间复杂度是 O(N)。空间复杂度是 O(1)
- **/
-
-function findNumsAppearOnce(arr) {
-    let num = arr.reduce((result, item) => {
-        return result ^ item
-    })
-
-    // 找到num 中第一个值是 1 的数位置在哪
-    let index = 0
-    while ((num & 1) === 0) {
-        num = num >> 1
-        index++
-    }
-
-    let value1, value2 = [0,0]
-
-    for(let i = 0; i < arr.length; i++) {
-        if (isal(arr[i], index)) {
-            value1 ^= arr[i]
-        }else {
-            value2 ^= arr[i]
+ * @param {Array<Middleware>} middlewares - 中间件数组
+ * @return {ComposedMiddleware} - 组合后的中间件
+ */
+function compose(middlewares) {
+    return async function() {
+        if (Array.isArray(middlewares) && middlewares.length) {
+            const ctx = {}
+            async function run(i) {
+                if (i >= middlewares.length) return
+                const midd = middlewares[i]
+                if (typeof midd === 'function') {
+                    return await midd(ctx, run.bind(null, i+1))
+                }
+            }
+            await run(0)
         }
     }
-
-    return { value1 ,value2 }
-
-
-    /**
-     * 判断数 i 在 index 位置的数是否为1
-     * @param
-     * @param index
-     * @returns {boolean}
-     */
-    function isal(i, index) {
-        i = i >> index
-        return (i & 1) === 1
-    }
-
-
-
+}
+// 要求达到如下效果：
+const middleware1 = async (ctx, next) => {
+    console.log('middleware1: start');
+    await next();
+    console.log('middleware1: end');
 }
 
-const nums1 = [1,1,2,4,5,4,5,3]
-console.log(findNumsAppearOnce(nums1))
+const middleware2 = async (ctx, next) => {
+    console.log('middleware2: start');
+    await next();
+    console.log('middleware2: end');
+}
+
+const middleware3 = async (ctx, next) => {
+    console.log('middleware3: start');
+    await next();
+    console.log('middleware3: end');
+}
+
+const ctx = {};
+const composedMiddleware = compose([middleware1, middleware2, middleware3]);
+
+
+// console.log("---->", composedMiddleware().then())
+
+composedMiddleware().then(() => {
+    console.log('done');
+});
+
+// 输出
+// middleware1: start
+// middleware2: start
+// middleware3: start
+// middleware3: end
+// middleware2: end
+// middleware1: end
+// done

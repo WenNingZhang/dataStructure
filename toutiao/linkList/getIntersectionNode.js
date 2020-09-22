@@ -62,7 +62,7 @@ var getIntersectionNode = function(headA, headB) {
 function __getIntersectionNode(headA, headB) {
     if (headA == null || headB == null) return null;
     let pA = headA, pB = headB;
-    while (pA != pB) {
+    while (pA !== pB) {
         pA = pA === null ? headB : pA.next;
         pB = pB === null ? headA : pB.next;
     }
@@ -97,5 +97,5 @@ console.log(__getIntersectionNode(a1, b1))
 
 
 
-//  pA a1   a2  c1  c2  c3  b1  b2  b3  c1       
+//  pA a1   a2  c1  c2  c3  b1  b2  b3  c1
 //  PB b1   b2  b3  c1  c2  c3  a1  a2  c1

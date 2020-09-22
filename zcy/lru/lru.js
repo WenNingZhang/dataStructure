@@ -175,6 +175,7 @@ class NodeDoubleLinkedList {
         if (this.tail === node) {
             return;
         }
+        // node 是头节点
         if (this.head === node) {
             this.head = this.head.next;
             this.head.last = null;

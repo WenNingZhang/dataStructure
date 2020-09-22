@@ -36,7 +36,7 @@ function minDistance(chars, str1, str2) {
             last2 = i
         }
     }
-    return min === Number.MIN_VALUE ? -1 : min
+    return min
 }
 
 let str = ["1", "3", "3", "3", "2", "3", "1"]

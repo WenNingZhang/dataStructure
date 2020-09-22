@@ -7,6 +7,7 @@ function process(arr, left, right) {
 
 	if (left < right) {
 		let result = partition(arr, left, right)
+		console.log(result)
 		process(arr, left, result[0]-1)
 		process(arr, result[1] + 1, right)
 		return arr

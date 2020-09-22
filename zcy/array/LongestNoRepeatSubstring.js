@@ -30,6 +30,6 @@ function maxUnique(str) {
     return len;
 }
 
-console.log(maxUnique("abcd"))
+console.log(maxUnique("abcdeas"))
 // console.log(maxUnique("aabca"))
 // console.log(maxUnique("aaaa"))

@@ -28,7 +28,7 @@ function heapify(arr, i, heapSize) {
         if (largest === i) {
             break
         }
-        swap(arr, i, largest)
+        swap( arr, i, largest)
         i = largest
         lc = i * 2 + 1
     }

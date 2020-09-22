@@ -89,6 +89,7 @@ function __sortList(head) {
     let res = new ListNode(0)
     res.next = head
 
+    // "10 -> 9 ->12 -> 19 -> 2"
     for(let i = 1; i <= count;i = i*2) {
         let prev = res
         let curr = res.next

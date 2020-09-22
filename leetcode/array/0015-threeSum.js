@@ -28,7 +28,7 @@ var threeSum = function(nums) {
         if (i > 0 && nums[i] === nums[i - 1]) continue;
         let L = i + 1
         let R = nums.length - 1
-        while( L < R) {
+        while( L < R ) {
             const sum = nums[i] + nums[L] + nums[R]
             if (sum === 0) {
                 result.push([nums[i], nums[L],nums[R]])

@@ -98,7 +98,7 @@ var isValid = function (s) {
             }
         }
     }
-    return stack.isEmpty() ? true : false
+    return stack.isEmpty()
 };
 
 

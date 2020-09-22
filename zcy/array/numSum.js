@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * 【题目】
 　　给定一个字符串str，求其中全部数字串所代表的数字之和。要求如下：
 忽略小数点字符，例如“A1.3”，其中包含两个数字1和3.
@@ -15,6 +15,7 @@ function numSum(str) {
     let posi = true // 布尔变量 posi, 如果把num 累加到 res 里面，num 是正还是负。
     for (let i = 0; i < chars.length; i++) {
         const char = chars[i] - '0'
+        // 不是数字
         if (!char) {
             res += num
             num = 0
@@ -35,5 +36,5 @@ function numSum(str) {
     return res
 }
 
-console.log(numSum("A1CD2E33"))
-console.log(numSum("A-1B--2C--D6E"))
+// console.log(numSum("A1CD2E33"))
+console.log(numSum("A-12B"))

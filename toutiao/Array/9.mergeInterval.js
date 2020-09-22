@@ -21,6 +21,7 @@
 function mergeInterval(intervals) {
     const res = []
     intervals.sort((a, b) => a[0] - b[0]);
+    console.log('--->', intervals)
     let i = 0;
     while (i < intervals.length) {
         let left = intervals[i][0];

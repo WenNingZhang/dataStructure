@@ -1,8 +1,8 @@
 
 /**
  * 判断两个字符串是否为变形词
- * @param {*} str1 
- * @param {*} str2 
+ * @param {*} str1
+ * @param {*} str2
  */
 function isDeformation(str1, str2) {
     const chars1 = str1.split('')
@@ -12,6 +12,7 @@ function isDeformation(str1, str2) {
     chars1.forEach(element => {
         map1[element] ? map1[element]++ : map1[element] = 1
     });
+    console.log('-------->', map1)
     chars2.forEach(element => {
         map2[element] ? map2[element]++ : map2[element] = 1
     });

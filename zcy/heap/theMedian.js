@@ -42,6 +42,6 @@ function run(nums) {
     return value
 }
 
-const arr = [1,10,30,4,1,2,3,4,5,56,7,7,12,11,100,20,30,40,50,60]
+const arr = [1,10,30,4,1,2,3,4,5,56,7,7,12,11,100,20,30,40,50,60,20]
 
 console.log(`${arr} the median is :`, run(arr))
